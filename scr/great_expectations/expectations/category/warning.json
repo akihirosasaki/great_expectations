@@ -1,0 +1,134 @@
+{
+  "data_asset_type": null,
+  "expectation_suite_name": "category.warning",
+  "expectations": [
+    {
+      "expectation_type": "expect_table_columns_to_match_ordered_list",
+      "kwargs": {
+        "column_list": [
+          "category_major_cd",
+          "category_major_name",
+          "category_medium_cd",
+          "category_medium_name",
+          "category_small_cd",
+          "category_small_name"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_table_row_count_to_be_between",
+      "kwargs": {
+        "max_value": 228,
+        "min_value": 228
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "category_medium_name",
+        "value_set": [
+          "\u305d\u306e\u4ed6",
+          "\u305d\u306e\u4ed6\u548c\u65e5\u914d",
+          "\u305d\u306e\u4ed6\u83d3\u5b50",
+          "\u30b3\u30fc\u30d2\u30fc\u30fb\u304a\u8336",
+          "\u30b5\u30e9\u30c0\u985e",
+          "\u30b9\u30ca\u30c3\u30af",
+          "\u30bf\u30d0\u30b3",
+          "\u30c1\u30e7\u30b3\u83d3\u5b50",
+          "\u30c1\u30eb\u30c9\u98df\u54c1",
+          "\u30c7\u30b6\u30fc\u30c8",
+          "\u30d1\u30f3",
+          "\u30d3\u30b9\u30b1\u30c3\u30c8",
+          "\u30d5\u30e9\u30a4\u7269",
+          "\u30d9\u30d3\u30fc\u30d5\u30fc\u30c9",
+          "\u30da\u30c3\u30c8\u30d5\u30fc\u30c9",
+          "\u30dd\u30b1\u30c3\u30c8\u7269",
+          "\u4e2d\u83ef\u60e3\u83dc",
+          "\u4e73\u88fd\u54c1",
+          "\u4e73\u98f2\u6599",
+          "\u4e7e\u9eba",
+          "\u4f43\u716e\u985e",
+          "\u51b7\u51cd\u98df\u54c1",
+          "\u51b7\u83d3",
+          "\u5373\u5e2d\u52a0\u5de5\u54c1",
+          "\u5375",
+          "\u53e3\u4e2d\u885b\u751f\u7528\u54c1",
+          "\u53f0\u6240\u7528\u54c1",
+          "\u548c\u98a8\u60e3\u83dc",
+          "\u548c\u98a8\u8abf\u5473\u6599",
+          "\u55dc\u597d\u54c1",
+          "\u5bb6\u5ead\u96d1\u8ca8",
+          "\u5fa1\u98ef\u985e",
+          "\u6804\u990a\u88dc\u52a9\u5264",
+          "\u6c34\u7269",
+          "\u6d0b\u98a8\u60e3\u83dc",
+          "\u6d0b\u98a8\u8abf\u5473\u6599",
+          "\u6d17\u5264",
+          "\u6d77\u7523\u4e7e\u7269",
+          "\u6f2c\u7269",
+          "\u713c\u304d\u7269",
+          "\u725b\u4e73",
+          "\u73cd\u5473",
+          "\u751f\u83d3\u5b50",
+          "\u751f\u9eba",
+          "\u77f3\u9e78\u30fb\u30b7\u30e3\u30f3\u30d7\u30fc\u30ea\u30f3\u30b9",
+          "\u7c73",
+          "\u7c73\u83d3\u5b50",
+          "\u7df4\u7269",
+          "\u7f36\u30fb\u74f6\u8a70",
+          "\u885b\u751f\u7d19\u7528\u54c1",
+          "\u8c46\u83d3\u5b50",
+          "\u8fb2\u7523\u4e7e\u7269",
+          "\u9632\u866b\u30fb\u82b3\u9999\u30fb\u6d88\u81ed\u5264",
+          "\u98f2\u6599",
+          "\u99c4\u83d3\u5b50",
+          "\uff24\uff29\uff39\u7528\u54c1"
+        ]
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "category_medium_name"
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_proportion_of_unique_values_to_be_between",
+      "kwargs": {
+        "column": "category_medium_name",
+        "max_value": 0.24561403508771928,
+        "min_value": 0.24561403508771928
+      },
+      "meta": {}
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_type_list",
+      "kwargs": {
+        "column": "category_medium_name",
+        "type_list": [
+          "CHAR",
+          "NCHAR",
+          "VARCHAR",
+          "NVARCHAR",
+          "TEXT",
+          "NTEXT",
+          "STRING",
+          "StringType",
+          "string",
+          "str",
+          "object",
+          "dtype('O')"
+        ]
+      },
+      "meta": {}
+    }
+  ],
+  "ge_cloud_id": null,
+  "meta": {
+    "great_expectations_version": "0.14.10"
+  }
+}
