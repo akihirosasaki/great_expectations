@@ -7,13 +7,30 @@ services:
     ports:
       - "8888:8888"
     tty: true
+    working_dir: /usr/app
     volumes:
-      - ./data:/usr/data
+      - ./scr:/usr/app
+      - gcloud-config:/root/.config
   gcloud:
     container_name: gcloud
     entrypoint: "gcloud"
     image: google/cloud-sdk:alpine
     volumes:
       - gcloud-config:/root/.config
+  terraform:
+    container_name: terraform
+    entrypoint: ash
+    image: hashicorp/terraform:latest
+    working_dir: /tmp/terraform
+    volumes:
+      - ./scr/terraform:/tmp/terraform
+      - gcloud-config:/root/.config
+    tty: true
+    secrets:
+      - gcp_secret
 volumes:
   gcloud-config:
+secrets:
+  gcp_secret:
+    file:
+      ../secrets/gcp_secret_key_test_asasaki_data_owner.json
