@@ -1,3 +1,30 @@
+# resource "google_project_iam_policy" "example-project" {
+#     project = var.gcp_project_id
+#     policy_data = data.google_iam_policy.composer2.policy_data
+#   }
+
+# data "google_iam_policy" "composer2" {
+
+#     # IMPORTANT: Include all other IAM bindings for your project.
+#     # Existing IAM policy in your project is overwritten with parameters
+#     # specified here.
+
+#     binding {
+#       role = "roles/composer.ServiceAgentV2Ext"
+
+#       members = [
+#         "serviceAccount:service-840090550767@cloudcomposer-accounts.iam.gserviceaccount.com",
+#       ]
+#     }
+
+#     # Edit the section below along with the example binding to match your
+#     # project's IAM policy.
+#     binding {
+#       role = 'roles/owner',
+#       members = ['example-user']
+#     }
+#   }
+
 resource "google_bigquery_dataset" "bigquery_dataset" {
   dataset_id    = "asasaki_data_infra_dataset"
   friendly_name = "asasaki_data_infra_dataset"
@@ -5,7 +32,7 @@ resource "google_bigquery_dataset" "bigquery_dataset" {
 }
 
 resource "google_composer_environment" "composer" {
-  name   = "composer"
+  name   = "composer-env"
   region = "us-central1"
   config {
 
