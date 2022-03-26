@@ -15,5 +15,10 @@ Metric
 Expectation
 - データについて検証できる宣言方式
 
+dbt init dbt
+dbt debug
+export DBT_PROFILES_DIR=/usr/app/dbt
+
+
 
 

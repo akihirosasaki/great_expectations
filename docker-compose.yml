@@ -11,11 +11,15 @@ services:
     volumes:
       - ./scr:/usr/app
       - gcloud-config:/root/.config
+    secrets:
+      - gcp_secret
   terraform:
     container_name: terraform
-    entrypoint: ash
+    entrypoint: bash
     image: hashicorp/terraform:latest
     working_dir: /tmp/terraform
+    # environment:
+    #   - PATH=$PATH:/root/google-cloud-sdk/bin
     volumes:
       - ./scr/terraform:/tmp/terraform
       - gcloud-config:/root/.config

@@ -1,0 +1,13 @@
+dbt:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      keyfile: /run/secrets/gcp_secret
+      project: test-asasaki
+      dataset: asasaki_data_infra_dataset
+      threads: 1
+      timeout_seconds: 300
+      location: us-central1 
+      priority: interactive
