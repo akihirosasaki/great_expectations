@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: asasaki_data_infra_dataset
+    tables:
+      - name: customer
+
+models:
+  - name: customers_men
+    columns:
+      - name: customer_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+      - name: gender_cd
+        description: 性別コード（0：男性）
+        tests:
+          - accepted_values:
+              values: ['0']
+      - name: gender
+        description: 性別名
+        tests:
+          - accepted_values:
+              values: ['男性']

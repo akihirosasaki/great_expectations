@@ -6,8 +6,11 @@ services:
     build: .
     ports:
       - "8888:8888"
+      - "8080:8080"
     tty: true
     working_dir: /usr/app
+    environment:
+      - DBT_PROFILES_DIR=/usr/app/dbt
     volumes:
       - ./scr:/usr/app
       - gcloud-config:/root/.config
@@ -15,11 +18,9 @@ services:
       - gcp_secret
   terraform:
     container_name: terraform
-    entrypoint: bash
+    entrypoint: ash
     image: hashicorp/terraform:latest
     working_dir: /tmp/terraform
-    # environment:
-    #   - PATH=$PATH:/root/google-cloud-sdk/bin
     volumes:
       - ./scr/terraform:/tmp/terraform
       - gcloud-config:/root/.config

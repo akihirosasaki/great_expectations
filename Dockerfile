@@ -11,6 +11,8 @@ RUN apt-get update -y && \
 RUN pip install --upgrade pip && \
     pip install great_expectations && \
     pip install sqlalchemy==1.4.25 && \
+    pip install sqlalchemy_bigquery && \
+    pip install pybigquery && \
     pip install dbt-bigquery
 
 RUN curl -sSL https://sdk.cloud.google.com | bash

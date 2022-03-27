@@ -18,7 +18,9 @@ Expectation
 dbt init dbt
 dbt debug
 export DBT_PROFILES_DIR=/usr/app/dbt
+dbt docs generate
+dbt docs serve
 
 
-
-
+context.run_checkpoint(checkpoint_name="checkpoint_customer")
+context.open_data_docs()
