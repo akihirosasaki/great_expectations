@@ -24,3 +24,5 @@ dbt docs serve
 
 context.run_checkpoint(checkpoint_name="checkpoint_customer")
 context.open_data_docs()
+
+https://dk521123.hatenablog.com/entry/2021/07/18/004531
