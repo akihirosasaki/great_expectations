@@ -1,10 +1,11 @@
 from datetime import timedelta
 import os
 
-import airflow
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.operators.python_operator import PythonOperator
+from airflow.hooks.base_hook import BaseHook
+from airflow import AirflowException
 
 from airflow_dbt.operators.dbt_operator import (
     DbtRunOperator,
@@ -15,16 +16,16 @@ from airflow.utils.dates import days_ago
 
 default_args = {
   'start_date': days_ago(0),
-  'retries': 1,
+  'retries': 0,
   'retry_delay': timedelta(days=1),
 }
 
 def validate(**context):
     from great_expectations.data_context import DataContext
 
-    conn = BaseHook.get_connection('bigquery_sasakky')
+    conn = BaseHook.get_connection('sasakky_bigquery')
     connection_json = conn.extra_dejson
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = connection_json['/run/secrets/gcp_secret']
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = connection_json['extra__google_cloud_platform__key_path']
 
     data_context: DataContext = DataContext(context_root_dir="/usr/app/great_expectations")
 
@@ -49,16 +50,15 @@ with DAG(dag_id='etl', default_args=default_args, schedule_interval='@daily') as
   dbt_test = DbtTestOperator(
     task_id='dbt_test',
     retries=0,  # Failing tests would fail the task, and we don't want Airflow to try again
-    profiles_dir='../dbt/',
+    profiles_dir='/usr/app/dbt/',
     dbt_bin='/usr/local/bin/dbt'
   )
 
   dbt_run = DbtRunOperator(
     task_id='dbt_run',
-    profiles_dir='../dbt/',
+    profiles_dir='/usr/app/dbt/',
     dbt_bin='/usr/local/bin/dbt'
   )
 
   
-
   ge_check >> dbt_test >> dbt_run

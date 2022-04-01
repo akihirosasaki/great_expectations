@@ -14,7 +14,7 @@ RUN pip install --upgrade pip && \
     pip install sqlalchemy_bigquery && \
     pip install pybigquery && \
     pip install dbt-bigquery && \
-    pip install apache-airflow
+    pip install apache-airflow[gcp]
 
 RUN curl -sSL https://sdk.cloud.google.com | bash
 
