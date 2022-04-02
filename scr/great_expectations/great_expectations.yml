@@ -88,6 +88,14 @@ data_docs_sites:
       base_directory: uncommitted/data_docs/local_site/
     site_index_builder:
       class_name: DefaultSiteIndexBuilder
+  gs_site:
+    class_name: SiteBuilder
+    store_backend:
+      class_name: TupleGCSStoreBackend
+      project: test-asasaki
+      bucket: sasakky_gcs_bucket
+    site_index_builder:
+      class_name: DefaultSiteIndexBuilder
 
 anonymous_usage_statistics:
   data_context_id: 141e852d-b057-4181-8362-c8e74f157587

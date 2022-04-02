@@ -2,7 +2,6 @@ from datetime import timedelta
 import os
 
 from airflow import DAG
-from airflow.operators.bash import BashOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.hooks.base_hook import BaseHook
 from airflow import AirflowException
@@ -17,7 +16,6 @@ from airflow.utils.dates import days_ago
 default_args = {
   'start_date': days_ago(0),
   'retries': 0,
-  'retry_delay': timedelta(days=1),
 }
 
 def validate(**context):
@@ -49,15 +47,17 @@ with DAG(dag_id='etl', default_args=default_args, schedule_interval='@daily') as
   
   dbt_test = DbtTestOperator(
     task_id='dbt_test',
-    retries=0,  # Failing tests would fail the task, and we don't want Airflow to try again
-    profiles_dir='/usr/app/dbt/',
-    dbt_bin='/usr/local/bin/dbt'
+    retries=0,
+    profiles_dir='/usr/app/dbt',
+    dbt_bin='/usr/local/bin/dbt',
+    dir='/usr/app/dbt'
   )
 
   dbt_run = DbtRunOperator(
     task_id='dbt_run',
-    profiles_dir='/usr/app/dbt/',
-    dbt_bin='/usr/local/bin/dbt'
+    profiles_dir='/usr/app/dbt',
+    dbt_bin='/usr/local/bin/dbt',
+    dir='/usr/app/dbt'
   )
 
   
