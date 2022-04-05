@@ -14,13 +14,12 @@ RUN pip install --upgrade pip && \
     pip install sqlalchemy_bigquery && \
     pip install pybigquery && \
     pip install dbt-bigquery && \
-    pip install apache-airflow[gcp]
+    pip install apache-airflow[gcp] && \
+    pip install airflow-dbt
 
 RUN curl -sSL https://sdk.cloud.google.com | bash
 
 ENV PATH $PATH:/root/google-cloud-sdk/bin
-
-ENV AIRFLOW_HOME="/usr/app/dag"
 
 ENV PYTHONIOENCODING=utf-8
 ENV LANG C.UTF-8

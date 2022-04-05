@@ -12,6 +12,7 @@ services:
     working_dir: /usr/app
     environment:
       - DBT_PROFILES_DIR=/usr/app/dbt
+      - AIRFLOW_HOME=/usr/app/dag
     volumes:
       - ./scr:/usr/app
       - gcloud-config:/root/.config

@@ -61,4 +61,4 @@ with DAG(dag_id='etl', default_args=default_args, schedule_interval='@daily') as
   )
 
   
-  ge_check >> dbt_test >> dbt_run
+  ge_check >> dbt_run >> dbt_test 
