@@ -3,7 +3,9 @@ version: '3.9'
 services:
   great_expectations:
     container_name: great_expectations
-    build: .
+    build: 
+      context: .
+      dockerfile: ./dev/Dockerfile.dev
     ports:
       - "8888:8888"
       - "8080:8080"

@@ -19,10 +19,6 @@ dbt init dbt
 dbt debug
 export DBT_PROFILES_DIR=/usr/app/dbt
 dbt docs generate
-dbt docs serve
 
-
-context.run_checkpoint(checkpoint_name="checkpoint_customer")
-context.open_data_docs()
-
-https://dk521123.hatenablog.com/entry/2021/07/18/004531
+gcloud builds submit --config ./prod/cloudbuild.yaml
+gcloud run deploy  --project test-asasaki --image gcr.io/test-asasaki/prod_data_pipeline --port 8080 --memory 2G
