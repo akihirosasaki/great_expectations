@@ -1,0 +1,35 @@
+on:
+  push:
+    branches:
+      - main
+
+name: Build and Deploy a Container
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT }}
+  GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+  SERVICE: datapipeline
+  IMAGE: gcr.io/${{ secrets.GCP_PROJECT }}/prod_data_pipeline:${{ github.sha }}
+  PORT: 8080
+  MEMORY: 2G
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0.2.0
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true  # Set to true to authenticate the Cloud Run action
+
+      - name: Deploy to Cloud Build
+        id: build
+        run: gcloud builds submit --config ./prod/cloudbuild.yaml
+
+      - name: Deploy to Cloud Run
+        id: deploy
+        run: gcloud run deploy --project ${{ env.PROJECT_ID }} --image ${{ env.IMAGE }} --port ${{ env.PORT }} --memory ${{ env.MEMORY }}

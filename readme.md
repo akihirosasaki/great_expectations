@@ -21,4 +21,4 @@ export DBT_PROFILES_DIR=/usr/app/dbt
 dbt docs generate
 
 gcloud builds submit --config ./prod/cloudbuild.yaml
-gcloud run deploy  --project test-asasaki --image gcr.io/test-asasaki/prod_data_pipeline --port 8080 --memory 2G
+gcloud run deploy --project test-asasaki --image gcr.io/test-asasaki/prod_data_pipeline --port 8080 --memory 2G
