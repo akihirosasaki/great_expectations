@@ -27,7 +27,8 @@ ENV GCP_AIRFLOW_SA_KEY ${GCP_AIRFLOW_SA_KEY}
 COPY ./scr/dag /usr/app/dag
 COPY ./scr/dbt /usr/app/dbt
 COPY ./scr/great_expectations /usr/app/great_expectations
-COPY GCP_AIRFLOW_SA_KEY /run/secrets/gcp_secret
+# ENV GCP_AIRFLOW_SA_KEY /run/secrets/gcp_secret
+RUN echo GCP_AIRFLOW_SA_KEY >> /run/secrets/gcp_secret
 COPY ./prod/airflow.conf /etc/supervisor/conf.d/airflow.conf
 
 ENV HOST 0.0.0.0
