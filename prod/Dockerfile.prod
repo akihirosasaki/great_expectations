@@ -22,12 +22,12 @@ ENV AIRFLOW_HOME /usr/app/dag
 ENV DBT_PROFILES_DIR /usr/app/dbt
 
 ARG GCP_AIRFLOW_SA_KEY
-ENV GCP_AIRFLOW_SA_KEY ${GCP_AIRFLOW_SA_KEY}
+# ENV GCP_AIRFLOW_SA_KEY ${GCP_AIRFLOW_SA_KEY}
 
 COPY ./scr/dag /usr/app/dag
 COPY ./scr/dbt /usr/app/dbt
 COPY ./scr/great_expectations /usr/app/great_expectations
-ENV /run/secrets/gcp_secret GCP_AIRFLOW_SA_KEY
+ENV /run/secrets/gcp_secret ${GCP_AIRFLOW_SA_KEY}
 # RUN echo GCP_AIRFLOW_SA_KEY >> /run/secrets/gcp_secret
 COPY ./prod/airflow.conf /etc/supervisor/conf.d/airflow.conf
 
