@@ -23,6 +23,7 @@ def validate(**context):
 
     conn = BaseHook.get_connection('sasakky_bigquery')
     connection_json = conn.extra_dejson
+    # os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = connection_json['extra__google_cloud_platform__keyfile_dict']
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = connection_json['extra__google_cloud_platform__key_path']
 
     data_context: DataContext = DataContext(context_root_dir="/usr/app/great_expectations")
