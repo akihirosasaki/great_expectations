@@ -4,7 +4,7 @@ dbt:
     dev:
       type: bigquery
       method: service-account
-      keyfile: /run/secrets/gcp_secret
+      keyfile: /tmp/gcp_secret.json
       project: test-asasaki
       dataset: asasaki_data_infra_dataset
       threads: 1

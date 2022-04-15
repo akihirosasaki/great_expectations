@@ -23,7 +23,8 @@ ENV DBT_PROFILES_DIR /usr/app/dbt
 
 ARG GCP_AIRFLOW_SA_KEY
 ENV GCP_AIRFLOW_SA_KEY ${GCP_AIRFLOW_SA_KEY}
-RUN echo GCP_AIRFLOW_SA_KEY | base64 --decode > /tmp/gcp_secret.json
+RUN echo GCP_AIRFLOW_SA_KEY
+RUN base64 --decode GCP_AIRFLOW_SA_KEY > /tmp/gcp_secret.json
 
 COPY ./scr/dag /usr/app/dag
 COPY ./scr/dbt /usr/app/dbt

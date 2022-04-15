@@ -18,8 +18,6 @@ services:
     volumes:
       - ./scr:/usr/app
       - gcloud-config:/root/.config
-    secrets:
-      - gcp_secret
   terraform:
     container_name: terraform
     entrypoint: ash

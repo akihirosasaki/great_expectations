@@ -30,7 +30,6 @@ jobs:
       - name: Deploy to Cloud Build
         id: build
         run: gcloud builds submit --config ./prod/cloudbuild.yaml --substitutions=_GCP_AIRFLOW_SA_KEY=GCP_AIRFLOW_SA_KEY
-        # run: gcloud builds submit -t gcr.io/test-asasaki/prod_data_pipeline -f ./prod/Dockerfile.prod .
 
       - name: Deploy to Cloud Run
         id: deploy

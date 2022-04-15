@@ -3,7 +3,7 @@ FROM python:3.9-slim
 RUN apt-get update -y && \
     apt-get install --no-install-recommends -y -q \
     git libpq-dev python3-dev build-essential supervisor && \
-    apt-get install -y vim nano lsof curl &&\
+    apt-get install -y vim nano lsof curl && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -12,6 +12,8 @@ RUN pip install --upgrade pip && \
     pip install apache-airflow[gcp] airflow-dbt
 
 RUN curl -sSL https://sdk.cloud.google.com | bash
+
+COPY gcp_secret_key_test_asasaki_data_owner.json /tmp/gcp_secret.json
 
 ENV PATH $PATH:/root/google-cloud-sdk/bin
 
