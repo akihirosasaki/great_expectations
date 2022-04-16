@@ -38,4 +38,4 @@ jobs:
 
       - name: Deploy to Cloud Run
         run: |
-          gcloud run deploy --project ${{ env.PROJECT_ID }} --image ${{ env.IMAGE }} --port ${{ env.PORT }} --memory ${{ env.MEMORY }}
+          gcloud run deploy ${{ env.SERVICE }} --project ${{ env.PROJECT_ID }} --image ${{ env.IMAGE }} --port ${{ env.PORT }} --memory ${{ env.MEMORY }}
