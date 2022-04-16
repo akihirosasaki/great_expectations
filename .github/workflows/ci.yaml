@@ -10,7 +10,7 @@ env:
   GCP_AIRFLOW_SA_KEY: ${{ secrets.GCP_AIRFLOW_SA_KEY }}
   SERVICE: datapipeline
   REGION: us-central1
-  IMAGE: gcr.io/${{ secrets.GCP_PROJECT }}/prod_data_pipeline:${{ github.sha }}
+  IMAGE: gcr.io/${{ secrets.GCP_PROJECT }}/prod_data_pipeline
   PORT: 8080
   MEMORY: 2G
 
