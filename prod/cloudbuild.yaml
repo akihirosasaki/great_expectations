@@ -1,8 +1,8 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'gcr.io/test-asasaki/prod_data_pipeline', '--build-arg', 'GCP_AIRFLOW_SA_KEY=${_GCP_AIRFLOW_SA_KEY}', '-f', './prod/Dockerfile.prod', '.' ]
-  dir: .
+  args: ['build', '-t', 'gcr.io/test-asasaki/prod_data_pipeline', '--build-arg', 'GCP_AIRFLOW_SA_KEY=${_GCP_AIRFLOW_SA_KEY}', '-f', './prod/Dockerfile.prod', '.']
 substitutions:
   _GCP_AIRFLOW_SA_KEY: foobar
-images:
-- 'gcr.io/test-asasaki/prod_data_pipeline'
+options:
+    substitution_option: 'ALLOW_LOOSE'
+# images: ['gcr.io/test-asasaki/prod_data_pipeline']
