@@ -13,6 +13,7 @@ env:
   IMAGE: gcr.io/${{ secrets.GCP_PROJECT }}/prod_data_pipeline
   PORT: 8080
   MEMORY: 2G
+  CPU: 2
 
 jobs:
   deploy:
@@ -39,4 +40,4 @@ jobs:
 
       - name: Deploy to Cloud Run
         run: |
-          gcloud run deploy ${{ env.SERVICE }} --project ${{ env.PROJECT_ID }} --region ${{ env.REGION }} --image ${{ env.IMAGE }} --port ${{ env.PORT }} --memory ${{ env.MEMORY }}
+          gcloud run deploy ${{ env.SERVICE }} --project ${{ env.PROJECT_ID }} --region ${{ env.REGION }} --image ${{ env.IMAGE }} --port ${{ env.PORT }} --memory ${{ env.MEMORY }} --cpu ${{ env.CPU }}

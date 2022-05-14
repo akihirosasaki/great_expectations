@@ -5,4 +5,3 @@ substitutions:
   _GCP_AIRFLOW_SA_KEY: foobar
 options:
     substitution_option: 'ALLOW_LOOSE'
-# images: ['gcr.io/test-asasaki/prod_data_pipeline']

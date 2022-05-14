@@ -353,11 +353,15 @@ MigrationBackup/
 
 .scr/venv/
 
+.terraform.lock.hcl
 terraform.tfstate
+terraform.tfstate.backup
 
 .terraform/
+
 
 /scr/.ipynb_checkpoints
 /scr/.Trash-0
 
 gcp_secret_key_test_asasaki_data_owner.json
+supervisord.pid
