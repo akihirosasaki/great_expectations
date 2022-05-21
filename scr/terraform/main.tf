@@ -52,7 +52,7 @@ resource "google_storage_bucket" "cloud_storage_bucket" {
 #     node_config {
 #       network    = google_compute_network.network.id
 #       subnetwork = google_compute_subnetwork.subnet.id
-#       service_account = "data-owner@test-asasaki.iam.gserviceaccount.com"
+#       service_account = ""
 #     }
 #   }
 # }

@@ -1,5 +1,5 @@
 variable "gcp_project_id" {
-  default = "test-asasaki"
+  default = ""
 }
 variable "GOOGLE_APPLICATION_CREDENTIALS" {
   default = "/run/secrets/gcp_secret"

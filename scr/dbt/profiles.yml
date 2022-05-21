@@ -5,7 +5,7 @@ dbt:
       type: bigquery
       method: service-account
       keyfile: /tmp/gcp_secret.json
-      project: test-asasaki
+      project: {project_id}
       dataset: asasaki_data_infra_dataset
       threads: 1
       timeout_seconds: 300
